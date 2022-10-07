@@ -1,36 +1,31 @@
 const sections_btn = Array.from(document.querySelectorAll('.section'));
 const reset_btn = document.querySelector('.resetButton');
+const start_btn = document.querySelector('.startButton');
+
 
 const Gameboard = (function () {
-    // let gameBoard = [0, 1, 2, 
-    //                  3, 4, 5,
-    //                  6, 7, 8];
-
     let gameBoard = [];
 
     let player = { isTurn: false }
 
     let computer = { isTurn: false }
 
-    
+    // start_btn.addEventListener('click', function() {
+    //     player.isTurn = true;
+    //     console.log(player)
+    // })
     
     sections_btn.map((button, e) => {
         gameBoard.push(e);
         button.addEventListener('click', (e) => {
             let lastChar = parseInt(e.target.id.substr(e.target.id.length - 1));
-            // console.table(gameBoard[lastChar])
 
             function drawBoard() {
                 switch (gameBoard[lastChar]) {
                     case 0:
                         player.isTurn ? e.target.textContent = 'X' : false;
                         computer.isTurn ? e.target.textContent = 'O' : false;
-                        // console.log(lastChar)
-                        // if (player.isTurn === false) return;
-                        // else {
-                        //     e.target.textContent = 'X'
-                        // }
-                        // console.log(player.isTurn);
+
                         break;
                     case 1:
                         player.isTurn ? e.target.textContent = 'X' : false;
@@ -66,9 +61,7 @@ const Gameboard = (function () {
                         break;
                 }
             }
-
             drawBoard();
-
         })
     })
 
@@ -76,6 +69,24 @@ const Gameboard = (function () {
         sections_btn.map((button, e) => {
             button.textContent = ''
         })
+        player.isTurn = false;
+        computer.isTurn = false;
     })
 
+    
+    const startGame = () => {
+        player.isTurn = true;
+        
+    }
+    
+    start_btn.addEventListener('click', startGame);
+
 })();
+
+// const gameFlow = (function() {
+//     start_btn.addEventListener('click', function() {
+//         player.isTurn = true;
+//         console.log(player)
+//     })
+// })();
+
