@@ -8,16 +8,11 @@ const Gameboard = (function () {
 
     let gameBoard = [];
 
-    let players = [
-        {
-            player: 'user',
-            isTurn: false
-        },
-        {
-            plauer: 'computer',
-            isTurn: false
-        }
-    ];
+    let player = { isTurn: false }
+
+    let computer = { isTurn: false }
+
+    
     
     sections_btn.map((button, e) => {
         gameBoard.push(e);
@@ -28,32 +23,46 @@ const Gameboard = (function () {
             function drawBoard() {
                 switch (gameBoard[lastChar]) {
                     case 0:
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         // console.log(lastChar)
-                        e.target.textContent = 'X'
+                        // if (player.isTurn === false) return;
+                        // else {
+                        //     e.target.textContent = 'X'
+                        // }
+                        // console.log(player.isTurn);
                         break;
                     case 1:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
-                   case 2:
-                        e.target.textContent = 'X'
-                    break;
+                    case 2:
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        break;
                     case 3:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
-                   case 4:
-                        e.target.textContent = 'X'
+                    case 4:
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
                     case 5:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
                     case 6:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
                    case 7:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
                     case 8:
-                        e.target.textContent = 'X'
+                        player.isTurn ? e.target.textContent = 'X' : false;
+                        computer.isTurn ? e.target.textContent = 'O' : false;
                         break;
                 }
             }
