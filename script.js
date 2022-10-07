@@ -6,58 +6,61 @@ const start_btn = document.querySelector('.startButton');
 const Gameboard = (function () {
     let gameBoard = [];
 
-    let player = { isTurn: false }
+    let player = { isTurn: false, gameCount: 0 }
 
-    let computer = { isTurn: false }
+    let computer = { isTurn: false, gameCount: 0 }
 
-    // start_btn.addEventListener('click', function() {
-    //     player.isTurn = true;
-    //     console.log(player)
-    // })
+
     
     sections_btn.map((button, e) => {
         gameBoard.push(e);
         button.addEventListener('click', (e) => {
             let lastChar = parseInt(e.target.id.substr(e.target.id.length - 1));
 
+            function boardButton() {
+                if (player.isTurn) {
+                    if (e.target.textContent === '') {
+                        e.target.textContent = 'X';
+                        player.gameCount++;
+                        player.isTurn = false;
+                    }
+                    game()
+                } else if (computer.isTurn) {
+                    e.target.textContent = 'O';
+                    computer.gameCount++;
+                    computer.isTurn = false;
+                }
+                console.log(player.gameCount);
+            }
+
             function drawBoard() {
                 switch (gameBoard[lastChar]) {
                     case 0:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
-
+                        boardButton();
                         break;
                     case 1:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 2:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 3:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 4:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 5:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 6:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                    case 7:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                     case 8:
-                        player.isTurn ? e.target.textContent = 'X' : false;
-                        computer.isTurn ? e.target.textContent = 'O' : false;
+                        boardButton();
                         break;
                 }
             }
@@ -71,12 +74,19 @@ const Gameboard = (function () {
         })
         player.isTurn = false;
         computer.isTurn = false;
+        player.gameCount = 0;
+        computer.gameCount = 0;
     })
 
     
     const startGame = () => {
         player.isTurn = true;
-        
+    }
+
+    function game() {
+        if (player.gameCount === 1) {
+            computer.isTurn = true;
+        }
     }
     
     start_btn.addEventListener('click', startGame);
@@ -89,4 +99,5 @@ const Gameboard = (function () {
 //         console.log(player)
 //     })
 // })();
+
 
