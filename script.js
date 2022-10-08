@@ -23,14 +23,20 @@ const Gameboard = (function () {
                         e.target.textContent = 'X';
                         player.gameCount++;
                         player.isTurn = false;
+                        computer.isTurn = true;
                     }
-                    game()
+                    // game()
                 } else if (computer.isTurn) {
-                    e.target.textContent = 'O';
-                    computer.gameCount++;
-                    computer.isTurn = false;
+                    if (e.target.textContent === '') {
+                        e.target.textContent = 'O';
+                        computer.gameCount++;
+                        computer.isTurn = false;
+                        player.isTurn = true;
+                    }
+                    // game();
                 }
-                console.log(player.gameCount);
+                console.log('Player Count: ' + player.gameCount + player.isTurn);
+                console.log('Computer Count: ' + computer.gameCount+ computer.isTurn)
             }
 
             function drawBoard() {
@@ -83,11 +89,18 @@ const Gameboard = (function () {
         player.isTurn = true;
     }
 
-    function game() {
-        if (player.gameCount === 1) {
-            computer.isTurn = true;
-        }
-    }
+    // function game() {
+    //     if (player.gameCount === 1 && computer.gameCount === 0) {
+    //         computer.isTurn = true;
+    //     }
+    //     if (computer.gameCount === 1) {
+    //         player.isTurn = true;
+    //         // computer.isTurn = false;
+    //     }
+    //     if (player.count === 2) {
+    //         computer.isTurn = true;
+    //     }
+    // }
     
     start_btn.addEventListener('click', startGame);
 
