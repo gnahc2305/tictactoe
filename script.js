@@ -29,28 +29,28 @@ const Gameboard = (function () {
         gameBoard.push(e);
         button.addEventListener('click', (e) => {
             let lastChar = parseInt(e.target.id.substr(e.target.id.length - 1));
-
+    
             function boardButton() {
                 if (player.isTurn) {
                     if (e.target.textContent === '') {
                         e.target.textContent = 'X';
                         player.gameCount++;
-                        // player.isTurn = false;
-                        // computer.isTurn = true;
+                        player.isTurn = false;
+                        computer.isTurn = true;
                         boardSpace[lastChar] = true;
+                        computerUpdate();
                     }
-                    // game()
                 } else if (computer.isTurn) {
-                    if (e.target.textContent === '') {
-                        e.target.textContent = 'O';
-                        computer.gameCount++;
-                        computer.isTurn = false;
-                        player.isTurn = true;
-                    }
-                    // game();
+                    // if (e.target.textContent === '') {
+                    //     e.target.textContent = 'O';
+                    //     computer.gameCount++;
+                    //     computer.isTurn = false;
+                    //     player.isTurn = true;
+                    //     boardSpace[lastChar] = true;
+                    // }
                 }
                 console.log('Player Count: ' + player.gameCount + player.isTurn);
-                console.log('Computer Count: ' + computer.gameCount+ computer.isTurn)
+                console.log('Computer Count: ' + computer.gameCount + computer.isTurn)
                 console.log(lastChar);
                 console.log('space: ' + boardSpace[lastChar]);
             }
@@ -98,6 +98,8 @@ const Gameboard = (function () {
         computer.isTurn = false;
         player.gameCount = 0;
         computer.gameCount = 0;
+        
+        Object.keys(boardSpace).forEach(function(key){ boardSpace[key] = false });
     })
 
     test_btn.addEventListener('click', () => {
@@ -145,6 +147,7 @@ const Gameboard = (function () {
                     boardSpace[8] = true;
                 }
             }
+            player.isTurn = true;
         }
 
         // console.log(Object.values(boardSpace))
