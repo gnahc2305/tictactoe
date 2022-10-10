@@ -3,6 +3,17 @@ const reset_btn = document.querySelector('.resetButton');
 const start_btn = document.querySelector('.startButton');
 const test_btn = document.querySelector('.test');
 
+const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
+
 
 const Gameboard = (function () {
     let gameBoard = [];
@@ -14,7 +25,7 @@ const Gameboard = (function () {
     // false = empty
     //true = occupied
     let boardSpace = {
-        0: false,
+        0: false, 
         1: false,
         2: false,
         3: false,
@@ -23,6 +34,39 @@ const Gameboard = (function () {
         6: false,
         7: false,
         8: false
+    }
+
+    function winnerO(text, win) {
+        if (boardSpace[0] === text && boardSpace[1] === text && boardSpace[2] === text) {
+            alert(win);
+        } else if (boardSpace[3] === text && boardSpace[4] === text && boardSpace[5] === text) {
+            alert(win);
+        
+        } else if (boardSpace[6] === text && boardSpace[7] === text && boardSpace[8] === text) {
+            alert(win);
+        
+        } else if (boardSpace[0] === text && boardSpace[3] === text && boardSpace[6] === text) {
+            alert(win);
+        
+        } else if (boardSpace[1] === text && boardSpace[4] === text && boardSpace[7] === text) {
+            alert(win);
+        
+        } else if (boardSpace[2] === text && boardSpace[5] === text && boardSpace[8] === text) {
+            alert(win);
+        
+        } else if (boardSpace[0] === text && boardSpace[4] === text && boardSpace[8] === text) {
+            alert(win);
+        
+        } else if (boardSpace[2] === text && boardSpace[4] === text && boardSpace[6] === text) {
+            alert(win);
+        } else if (player.gameCount === 5) {
+            alert('tie');
+        }
+    }
+
+    function checkForWin() {
+        winnerO('trueX', 'You Win');
+        winnerO('trueO', 'You Lose');
     }
     
     sections_btn.map((button, e) => {
@@ -37,8 +81,10 @@ const Gameboard = (function () {
                         player.gameCount++;
                         player.isTurn = false;
                         computer.isTurn = true;
-                        boardSpace[lastChar] = true;
+                        boardSpace[lastChar] = true + 'X';
+                        // boardSign[lastChar] = 'X';
                         computerUpdate();
+                        checkForWin();
                     }
                 } else if (computer.isTurn) {
                     // if (e.target.textContent === '') {
@@ -46,13 +92,14 @@ const Gameboard = (function () {
                     //     computer.gameCount++;
                     //     computer.isTurn = false;
                     //     player.isTurn = true;
-                    //     boardSpace[lastChar] = true;
+                    //     boardSpace[lastChar] = true + 'O';
                     // }
                 }
                 console.log('Player Count: ' + player.gameCount + player.isTurn);
                 console.log('Computer Count: ' + computer.gameCount + computer.isTurn)
                 console.log(lastChar);
                 console.log('space: ' + boardSpace[lastChar]);
+                // console.log('sign: ' + boardSign[lastChar]);
             }
 
             function drawBoard() {
@@ -114,37 +161,47 @@ const Gameboard = (function () {
         function cpDraw(section) {
             if (boardSpace[section] === false) {
                 sections_btn[section].textContent = 'O';
-                boardSpace[section] = true;
+                // boardSign = 'O';
+                boardSpace[section] = true + 'O';
             } else {
                 console.log('occupied');
                 // console.log(boardSpace[0]);
                 if (boardSpace[0] === false) {
                     sections_btn[0].textContent = 'O';
-                    boardSpace[0] = true;
+                    // boardSign = 'O';
+                    boardSpace[0] = true + 'O';
                 } else if (boardSpace[1] === false) {
                     sections_btn[1].textContent = 'O';
-                    boardSpace[1] = true;
+                    // boardSign = 'O';
+                    boardSpace[1] = true + 'O';
                 } else if (boardSpace[2] === false) {
                     sections_btn[2].textContent = 'O';
-                    boardSpace[2] = true;
+                    // boardSign = 'O';
+                    boardSpace[2] = true + 'O';
                 } else if (boardSpace[3] === false) {
                     sections_btn[3].textContent = 'O';
-                    boardSpace[3] = true;
+                    // boardSign = 'O';
+                    boardSpace[3] = true + 'O';
                 } else if (boardSpace[4] === false) {
                     sections_btn[4].textContent = 'O';
-                    boardSpace[4] = true;
+                    // boardSign = 'O';
+                    boardSpace[4] = true + 'O';
                 } else if (boardSpace[5] === false) {
                     sections_btn[5].textContent = 'O';
-                    boardSpace[5] = true;
+                    // boardSign = 'O';
+                    boardSpace[5] = true + 'O';
                 } else if (boardSpace[6] === false) {
                     sections_btn[6].textContent = 'O';
-                    boardSpace[6] = true;
+                    // boardSign = 'O';
+                    boardSpace[6] = true + 'O';
                 } else if (boardSpace[7] === false) {
                     sections_btn[7].textContent = 'O';
-                    boardSpace[7] = true;
+                    // boardSign = 'O';
+                    boardSpace[7] = true + 'O';
                 } else if (boardSpace[9] === false) {
                     sections_btn[8].textContent = 'O';
-                    boardSpace[8] = true;
+                    // boardSign = 'O';
+                    boardSpace[8] = true + 'O';
                 }
             }
             player.isTurn = true;
@@ -230,5 +287,15 @@ const Gameboard = (function () {
     }
 
     start_btn.addEventListener('click', startGame);
+
+    // function checkForWin() {
+    //     return winningCombinations.some(combination => {
+    //         return combination.every(index => {
+    //             return boardSpace[index] === text || 'trueO';
+    //         })
+    //     })
+    // }
+
+
 
 })();
