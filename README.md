@@ -1,4 +1,4 @@
-# tictactoe
+# Tic Tac Toe
 Tic Tac Toe game
 
 Modes: Player vs Player and Player vs Computer

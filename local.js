@@ -115,11 +115,6 @@ local_btn.addEventListener('click', () => {
                         winnerO('trueO', 'You Lose');
                     }
                 }
-                console.log('Player Count: ' + player.gameCount + player.isTurn);
-                console.log('Computer Count: ' + computer.gameCount + computer.isTurn)
-                console.log(lastChar);
-                console.log('space: ' + boardSpace[lastChar]);
-                // console.log('sign: ' + boardSign[lastChar]);
             }
 
             function drawBoard() {

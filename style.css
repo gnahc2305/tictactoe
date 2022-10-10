@@ -18,13 +18,27 @@ body {
 
 .buttons button {
     height: 60px;
-    width: 130px;
+    width: 150px;
     font-size: 18px;
     border: none;
     border-radius: 25px;
     margin: 10px;
 }
 
+button:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  font-size: 20px;  
+}
 
 .container {
     background-color: rgb(144, 84, 84);
