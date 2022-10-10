@@ -5,9 +5,17 @@
 const local_btn = document.querySelector('.localButton');
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
+var header = document.querySelector('.modal-header');
+
 
 span.onclick = function() {
     modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
 }
 
 local_btn.addEventListener('click', () => {
@@ -33,26 +41,52 @@ local_btn.addEventListener('click', () => {
         8: false
     }
 
+    const startGame = () => {
+        player.isTurn = true;
+    }
+
+    start_btn.addEventListener('click', startGame);
+
+    reset_btn.addEventListener('click', () => {
+        sections_btn.map((button, e) => {
+            button.textContent = ''
+        })
+        player.isTurn = false;
+        computer.isTurn = false;
+        player.gameCount = 0;
+        computer.gameCount = 0;
+        
+        Object.keys(boardSpace).forEach(function(key){ boardSpace[key] = false });
+    })
+
     function winnerO(text, win) {
         if (boardSpace[0] === text && boardSpace[1] === text && boardSpace[2] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[3] === text && boardSpace[4] === text && boardSpace[5] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[6] === text && boardSpace[7] === text && boardSpace[8] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[0] === text && boardSpace[3] === text && boardSpace[6] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[1] === text && boardSpace[4] === text && boardSpace[7] === text) {
-            modal.style.display = "block";        
+            modal.style.display = "block";   
+            header.textContent = win;
         } else if (boardSpace[2] === text && boardSpace[5] === text && boardSpace[8] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[0] === text && boardSpace[4] === text && boardSpace[8] === text) {
             modal.style.display = "block";
+            header.textContent = win;
         } else if (boardSpace[2] === text && boardSpace[4] === text && boardSpace[6] === text) {
             modal.style.display = "block";
-        } else if (player.gameCount === 5) {
+            header.textContent = win;
+        } else if (player.gameCount + computer.gameCount === 9) {
             modal.style.display = "block";
-            //tie
+            header.textContent = 'Tie';
         }
     }
 

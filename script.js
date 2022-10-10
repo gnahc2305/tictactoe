@@ -62,23 +62,18 @@ const Gameboard = (function () {
         } else if (boardSpace[0] === text && boardSpace[3] === text && boardSpace[6] === text) {
             modal.style.display = "block";
             header.textContent = win;
-
         } else if (boardSpace[1] === text && boardSpace[4] === text && boardSpace[7] === text) {
             modal.style.display = "block";   
             header.textContent = win;
-     
         } else if (boardSpace[2] === text && boardSpace[5] === text && boardSpace[8] === text) {
             modal.style.display = "block";
             header.textContent = win;
-
         } else if (boardSpace[0] === text && boardSpace[4] === text && boardSpace[8] === text) {
             modal.style.display = "block";
             header.textContent = win;
-
         } else if (boardSpace[2] === text && boardSpace[4] === text && boardSpace[6] === text) {
             modal.style.display = "block";
             header.textContent = win;
-
         } else if (player.gameCount === 5) {
             modal.style.display = "block";
             header.textContent = 'Tie';
