@@ -79,11 +79,6 @@ const Gameboard = (function () {
             header.textContent = 'Tie';
         }
     }
-
-    function checkForWin() {
-        winnerO('trueX', 'You Win!');
-        winnerO('trueO', 'You Lose');
-    }
     
     sections_btn.map((button, e) => {
         gameBoard.push(e);
@@ -99,7 +94,8 @@ const Gameboard = (function () {
                         computer.isTurn = true;
                         boardSpace[lastChar] = true + 'X';
                         computerUpdate();
-                        checkForWin();
+                        winnerO('trueX', 'You Win!');
+                        winnerO('trueO', 'You Lose');
                     }
                 }
                 console.log('Player Count: ' + player.gameCount + player.isTurn);
